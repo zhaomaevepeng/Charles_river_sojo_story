@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love that "Dirty Water" - Pollution in the Charles River</title>
+    <style>
+        :root {
+            --dark-teal: #005566;
+            --light-teal: #008899;
+            --accent: #ffcc00;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-teal);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--light-teal);
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+        }
+
+        .pollutant-container {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding: 10px 0;
+            background-color: var(--dark-teal);
+        }
+
+        .pollutant-card {
+            width: 150px;
+            height: 150px;
+            perspective: 1000px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .pollutant-card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .pollutant-card:hover .pollutant-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .pollutant-card-front,
+        .pollutant-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 5px;
+            text-align: center;
+            overflow: hidden;
+            font-size: 0.6rem;
+        }
+
+        .pollutant-card-front {
+            background-color: var(--light-teal);
+            color: var(--text-light);
+        }
+
+        .pollutant-card-back {
+            background-color: #00707f;
+            transform: rotateY(180deg);
+            color: var(--text-light);
+            font-size: 0.5rem;
+        }
+
+        .pollutant-card-back h3 {
+            margin-bottom: 5px;
+            font-size: 0.7rem;
+        }
+
+        .pollutant-card-details {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            font-size: 0.5rem;
+        }
+
+        .pollutant-card-details li {
+            margin-bottom: 3px;
+        }
+
+        .pollutant-card-details strong {
+            display: block;
+            color: var(--accent);
+            margin-bottom: 2px;
+        }
+
+        section {
+            background-color: var(--dark-teal);
+            color: var(--text-light);
+            padding: 20px 0;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-section p {
+            margin-bottom: 1.5em;
+        }
+
+        .river-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .flourish-embed {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        /* Fade-in scroll animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .fade-in.delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in.delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .fade-in.delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Love that "Dirty Water" - Pollution in the Charles River</h1>
+        <p>The impact of impermeable surface runoff and green infrastructure solutions</p>
+        <p>By: Caitlin Molloy, Maria Membreno, & Lena Hicks</p>
+    </header>
+    
+    <div class="container">
+        <div class="pollutant-container">
+            <div class="pollutant-card">
+                <div class="pollutant-card-inner">
+                    <div class="pollutant-card-front">
+                        <div class="pollutant-card-icon">🌱</div>
+                        <h3>Nutrients</h3>
+                        <p>Nitrogen & Phosphorus</p>
+                    </div>
+                    <div class="pollutant-card-back">
+                        <h3>Nutrients (N & P)</h3>
+                        <ul class="pollutant-card-details">
+                            <li><strong>Sources</strong>Lawn fertilizers, pet waste</li>
+                            <li><strong>Impact</strong>Harmful algal blooms, oxygen depletion</li>
+                            <li><strong>Patterns</strong>Peaks in spring and summer</li>
+                            <li><strong>Measurement</strong>Often exceeds EPA standards by 200%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pollutant-card">
+                <div class="pollutant-card-inner">
+                    <div class="pollutant-card-front">
+                        <div class="pollutant-card-icon">⚙️</div>
+                        <h3>Heavy Metals</h3>
+                        <p>Zinc, Copper, Lead</p>
+                    </div>
+                    <div class="pollutant-card-back">
+                        <h3>Heavy Metals</h3>
+                        <ul class="pollutant-card-details">
+                            <li><strong>Sources</strong>Brake dust, tire wear, industry</li>
+                            <li><strong>Common metals</strong>Zinc, copper, lead, cadmium</li>
+                            <li><strong>Impact</strong>Bioaccumulation in fish and wildlife</li>
+                            <li><strong>Hotspots</strong>Near highways and industrial zones</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pollutant-card">
+                <div class="pollutant-card-inner">
+                    <div class="pollutant-card-front">
+                        <div class="pollutant-card-icon">❄️</div>
+                        <h3>Road Salt</h3>
+                        <p>Deicing Chemicals</p>
+                    </div>
+                    <div class="pollutant-card-back">
+                        <h3>Road Salt & Deicers</h3>
+                        <ul class="pollutant-card-details">
+                            <li><strong>Sources</strong>Winter road maintenance</li>
+                            <li><strong>Impact</strong>Chloride spikes during thaws</li>
+                            <li><strong>Concern</strong>Salt accumulation in groundwater</li>
+                            <li><strong>Levels</strong>Up to 350% above aquatic life limits</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pollutant-card">
+                <div class="pollutant-card-inner">
+                    <div class="pollutant-card-front">
+                        <div class="pollutant-card-icon">🛢️</div>
+                        <h3>Petroleum</h3>
+                        <p>Oil & Gas Products</p>
+                    </div>
+                    <div class="pollutant-card-back">
+                        <h3>Petroleum Hydrocarbons</h3>
+                        <ul class="pollutant-card-details">
+                            <li><strong>Sources</strong>Oil leaks, spills, vehicle emissions</li>
+                            <li><strong>Impact</strong>Toxic to aquatic life</li>
+                            <li><strong>Concentrations</strong>Highest during "first flush" rains</li>
+                            <li><strong>Detection</strong>Visible rainbow sheen on water</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pollutant-card">
+                <div class="pollutant-card-inner">
+                    <div class="pollutant-card-front">
+                        <div class="pollutant-card-icon">🧩</div>
+                        <h3>Microplastics</h3>
+                        <p>Synthetic Particles</p>
+                    </div>
+                    <div class="pollutant-card-back">
+                        <h3>Microplastics</h3>
+                        <ul class="pollutant-card-details">
+                            <li><strong>Sources</strong>Tire wear, synthetic clothing, litter</li>
+                            <li><strong>Impact</strong>Ingestion by aquatic organisms</li>
+                            <li><strong>Research</strong>Emerging area of study</li>
+                            <li><strong>Findings</strong>13.3 particles per liter in urban areas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="content-section">
+                <p>The Charles River is a Boston icon. However, it suffers from poor water quality issues which impact not only the native wildlife, but the Bostonians who frequent it. Despite this, the water quality is making steady improvements thanks to environmental protection efforts by Boston and surrounding cities.</p>
+
+                <p>Though it can be seen in the numbers that the water quality has gotten noticeably better over the years, few people have first-hand experience being on the river like the rowers that find a practice place on the Charles. Kane Larin, the Director of Operations at Community Rowing Inc. based in Brighton, MA, has been rowing regularly on the Charles since 1991.</p>
+
+                <img src="charles1.jpg" width="800" height="600">
+                <p style="color: gray"><small>From Boston Magazine</small></p4>
+
+                <p>"I've seen a lot of change," said Larin. "When I started rowing on the river, they still hadn't built Deer Island, the sewage treatment plant." The Deer Island Wastewater Treatment Plant was created in 1968, and operations of the plant were taken over by the Massachusetts Water Resources Authority (MWRA) in 1985. Deer Island was created to help remove pollutants from wastewater that ends up in the Charles due to combined sewage overflow (CRO) from the 43 communities in Greater Boston.</p>
+
+                <header> E.coli Levels in the Charles by Year</header>
+                <div class="flourish-embed flourish-chart" data-src="visualisation/22342503"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/22342503/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+
+                <p>The island (which is not actually an island, but is nicknamed as one),  has seen major additions and updates throughout the years. This includes the construction of a primary treatment plant in 1991, and creation of a secondary treatment plant in 1997.</p>
+
+                <p>Deer Island is still functional today and plays a key role in helping keep the Charles River free of sewage pollutants. Before the plant was functioning to the standard it does now, there were visible effects in the Charles from CRO after a rainstorm. "When there was heavy rain, you could see the sort of untreated or lightly treated water just sort of like bubbling up, particularly at the cottage farm outfall, which is down by the BU bridge," Larin said. "You used to row over it and there would be this sort of this big brown swirl of water. It really gross. It's gotten much, much cleaner," he added.</p>
+
+                <p>There are still health concerns, despite the progress that has been made. "For people that have been on the river a bunch, it's also fairly predictable when there's going to be an issue, you can tell by how much rain we've had," said Larin.  "Right after a big rain storm, there tends to be overflows. The water is less safe for a couple days after that." It is recommended that people use a little more caution when going out on the Charles to row in those situations.</p>
+
+                <p>"It's really about it's sort of building good hygiene practices, like when people come in [to Community Rowing Inc.] making sure that they wash their hands," Larin said. He also mentioned being conscientious of water splashing onto people and water bottles when they are in the boats. Making sure personal water bottles are cleaned before drinking from them is recommended.</p>
+
+                <p>Larin said "In general, it isn't that people get sick while they're still out there. It's sort of like it and after effect, more like food poisoning, It comes and gets you later." The effects of pollution and potential sickness are taken into consideration by Larin and other members of CRI, but the river quality does not effect the rowing gear that is used.</p>
+
+                <p>The efforts made by have made a difference in Charles, but this does not mean the problem is solved. While it is cleaner, there needs to be maintenance to keep these standards up with the times. CRI uses the Charles River Watershed Association's (CRWA) water quality report and prediction tool to help navigate potentially dangerous water at times.</p>
+
+                <header>Live data of the pollution levels of the Charles River</header>
+                <div class="flourish-embed flourish-map" data-src="visualisation/22178887"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/22178887/thumbnail" width="100%" alt="map visualization" /></noscript></div>
+
+                <p>There is still work to be done when it comes to cleaning and maintaining good water quality of the Charles River. "I think it's going to take a commitment from all water users," said Larin. "I'm hopeful that the people will see the benefit of making the river cleaner and healthier, and I think that it isn't just people that go on the river that will benefit."</p>
+
+                <p>The Charles River has a long history lined with pollution and efforts to clean it up. Now the EPA is working towards solutions for keeping the river safe to swim, fish, and boat on for most of the year.</p>
+
+                <p>The Charles River story starts in the 1800s, when architect Charles Eliot developed the plan imagining the river as a public area lined with parks. For this to work the river banks previously owned by the City of Cambridge and Boston Metropolitan Park Commission were transferred to public domain. Then in the 1900s a dam was put in place to help aid the smell from all the sewage going into the river and the Esplanade was created.</p>
+
+                <p>By the middle of the 1960s the Charles River Watershed Association, the Environmental Protection Agency, the Massachusetts Water Resources Authority, the Massachusetts Department of Environmental Protection and the Boston and the multiple municipalities surrounding the river worked together to improve the water quality of the river and cease major industrial activities.</p>
+
+                <p>In 1995 the Environmental Protection Agency created the Clean Charles River Initiative, which has made different activities in the river a reality over the last thirty years. In an interview with Todd Borci, the head of the EPA's Charles River Enforcement, he said the river has "great water quality compared to how it used to be," and said "it really is swimmable."</p>
+
+                <p>There's a lot of stigma surrounding the water quality of the river, Borci explained, however the Charles is now open for varying activities such as swimming and boating for most of the year. Anyone can apply for a permit to any of these activities in the river through the DCR, however there are also events created by organizations such as the annual City Splash, which allows for certain areas in the Charles to be open for swimming.</p>
+
+                <p>The future of the Charles River is bright as the EPA and the Charles River Watershed Association alongside the citizens of the Commonwealth continue to work towards a cleaner and safer river for all.</p>
+
+                <p>Other cities that the Charles River flows through are also doing their part to reduce pollution in the Charles. One such city is Newton, Massachutes. This past February they broke ground on a new water filtration project which at its completion will help filter pollutants from the Cheesecake Brooke, a tributary of the Charles River, as well as mitigate flood concerns.</p>
+
+                <p>Impermeable surface runoff is one of the main concerns to the health of the Charles River. The Boston metroplex is largely urbanized and contains a large amount of paved surfaces, which unlike organic surfaces, lack the natural filtration to absorb harmful chemicals and particles from runoff caused by rain and snowmelt. This water then runs unfiltered into the Charles river and with it brings the pollutants.</p>
+
+                <p>One of the most harmful of these pollutants is phosphorus. This chemical is commonly found in fertilizers and animal manure. When it flows into the river from runoff it leads to an over abundance. The large amounts of phosphorus causes harmful algal blooms which threaten the health of people and animals that come into contact with it.</p>
+
+                <p>The Cheesecake project involves installing an underground water storage and filtration facility to collect 100% of stormwater runoff from a neighborhood adjacent to the brook. The facility will contain almost 50,000 cubic feet of water from large storms, where it will be stored and slowly filtered through the ground and back into the brook.</p>
+
+                <img src=newton.jpg width="800" height="600"> 
+                <p style="color: gray"><small>From Charles River Watershed Association</small></p>
+
+                <p>This project was a collaboration between the Newton Department of Parks, Recreation, and Culture (PRC), Newton's Department of Public Works (DPW), and the Charles River Watershed Association (CRWA). The Newton Department of Public works pursued this project to meet pollution mitigation goals set by the city, Eric Highers, an environmental engineer working for the Newton Department of public works, explained.</p>
+
+                <p>Both flooding that harms Newton Residents as well as phosphorus pollution that impacts the Charles River are both problems stemming from current conditions of the Cheesecake Brook. "Newton has one of the largest phosphorus export loads throughout the Charles River Watershed," said Highers.</p>
+
+                <p>The new storage and filtration system will help mitigate both of these problems. "The Crafts St Infiltration Basin that is going in as part of this grant project is designed to retain upstream runoff and infiltrate up to the 25-year storm event," Highers stated, "this is a considerable volume that when removed will help keep water levels down in Cheesecake Brook and mitigate the excessive nutrient concentrations associated with that volume."</p>
+
+                <p>Beyond the water filtration system, the PRC, DPW, and CRWA plan to plant native flora along the banks of the brook, creating a bioswale, another common runoff filtration tactic.</p>
+
+               <img src=garden.png width="800" height="400">
+               <p style="color:gray"><small>From Gardenbite</small></p>
+
+                <p>Aside from large projects such as this, citizens can also make an impact by implementing their own stormwater control measures. Highers encouraged this practice stating "the City [Newton] heavily encourages residents to implement stormwater control measures on their property that mitigate runoff to street drains." Popular methods of stormwater control measures are rain gardens, rain barrels, and subsurface infiltration systems. "However, the However, the City stresses that any resident interested in pursuing these measures on their property to contract a private engineer to ensure that the system is sized appropriately for their property and will not overflow, back up, or cause issues for their abutters."</p>
+
+                <p>In the future the city of Newton is "working tirelessly to investigate the feasibility of implementing these stormwater control measures throughout the City and mitigate its pollutant export load to the Charles River" emphasised Highers. However, due to factors such as soil conditions, infrastructure constraints, or groundwater elevations, these measures are not always possible. Regardless of this there is still much opportunity for creating a clean and resilient Charles River.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all elements you want to fade in
+            const fadeElements = document.querySelectorAll('.content-section > p, .content-section > header, .content-section > img, .content-section > .flourish-embed, .pollutant-card');
+            
+            // Create intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add fade-in class when element is in view
+                        entry.target.classList.add('fade-in');
+                        
+                        // Add staggered delays for pollutant cards
+                        if (entry.target.classList.contains('pollutant-card')) {
+                            const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+                            entry.target.classList.add(`delay-${index % 4}`);
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Observe all elements
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
